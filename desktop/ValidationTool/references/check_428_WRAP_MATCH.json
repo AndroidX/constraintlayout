@@ -1,0 +1,342 @@
+{
+  "duration": "509048",
+  "layout": {
+    "children": [
+      {
+        "bounds": {
+          "top": "0",
+          "left": "0",
+          "bottom": "0",
+          "right": "0"
+        },
+        "id": "action_mode_bar_stub",
+        "class": "ViewStub"
+      },
+      {
+        "children": [{
+          "children": [
+            {
+              "bounds": {
+                "top": "48",
+                "left": "72",
+                "bottom": "89",
+                "right": "584"
+              },
+              "id": "header_title",
+              "class": "MaterialTextView"
+            },
+            {
+              "bounds": {
+                "top": "1344",
+                "left": "0",
+                "bottom": "1344",
+                "right": "0"
+              },
+              "id": "barrier",
+              "class": "Barrier"
+            },
+            {
+              "children": [
+                {
+                  "children": [
+                    {
+                      "bounds": {
+                        "top": "0",
+                        "left": "0",
+                        "bottom": "240",
+                        "right": "288"
+                      },
+                      "id": "material_hour_tv",
+                      "class": "Chip"
+                    },
+                    {
+                      "bounds": {
+                        "top": "12",
+                        "left": "288",
+                        "bottom": "209",
+                        "right": "360"
+                      },
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "0",
+                        "left": "360",
+                        "bottom": "240",
+                        "right": "648"
+                      },
+                      "id": "material_minute_tv",
+                      "class": "Chip"
+                    }
+                  ],
+                  "bounds": {
+                    "top": "24",
+                    "left": "0",
+                    "bottom": "264",
+                    "right": "648"
+                  },
+                  "id": "material_clock_display",
+                  "class": "LinearLayout"
+                },
+                {
+                  "children": [
+                    {
+                      "bounds": {
+                        "top": "0",
+                        "left": "0",
+                        "bottom": "144",
+                        "right": "156"
+                      },
+                      "id": "material_clock_period_am_button",
+                      "class": "MaterialButton"
+                    },
+                    {
+                      "bounds": {
+                        "top": "141",
+                        "left": "0",
+                        "bottom": "285",
+                        "right": "156"
+                      },
+                      "id": "material_clock_period_pm_button",
+                      "class": "MaterialButton"
+                    }
+                  ],
+                  "bounds": {
+                    "top": "0",
+                    "left": "684",
+                    "bottom": "288",
+                    "right": "840"
+                  },
+                  "id": "material_clock_period_toggle",
+                  "class": "MaterialButtonToggleGroup"
+                },
+                {
+                  "children": [
+                    {
+                      "bounds": {
+                        "top": "384",
+                        "left": "384",
+                        "bottom": "385",
+                        "right": "385"
+                      },
+                      "id": "circle_center",
+                      "class": "View"
+                    },
+                    {
+                      "bounds": {
+                        "top": "0",
+                        "left": "0",
+                        "bottom": "768",
+                        "right": "768"
+                      },
+                      "id": "material_clock_hand",
+                      "class": "ClockHandView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "6",
+                        "left": "312",
+                        "bottom": "163",
+                        "right": "458"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "46",
+                        "left": "474",
+                        "bottom": "203",
+                        "right": "595"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "156",
+                        "left": "584",
+                        "bottom": "313",
+                        "right": "705"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "306",
+                        "left": "624",
+                        "bottom": "463",
+                        "right": "745"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "456",
+                        "left": "584",
+                        "bottom": "613",
+                        "right": "705"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "566",
+                        "left": "474",
+                        "bottom": "723",
+                        "right": "595"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "606",
+                        "left": "324",
+                        "bottom": "763",
+                        "right": "445"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "566",
+                        "left": "174",
+                        "bottom": "723",
+                        "right": "295"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "456",
+                        "left": "64",
+                        "bottom": "613",
+                        "right": "185"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "306",
+                        "left": "24",
+                        "bottom": "463",
+                        "right": "145"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "156",
+                        "left": "52",
+                        "bottom": "313",
+                        "right": "198"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    },
+                    {
+                      "bounds": {
+                        "top": "46",
+                        "left": "161",
+                        "bottom": "203",
+                        "right": "308"
+                      },
+                      "id": "NOT_FOUND",
+                      "class": "MaterialTextView"
+                    }
+                  ],
+                  "bounds": {
+                    "top": "372",
+                    "left": "36",
+                    "bottom": "1140",
+                    "right": "804"
+                  },
+                  "id": "material_clock_face",
+                  "class": "ClockFaceView"
+                }
+              ],
+              "bounds": {
+                "top": "132",
+                "left": "72",
+                "bottom": "1272",
+                "right": "912"
+              },
+              "id": "material_timepicker_view",
+              "class": "TimePickerView"
+            },
+            {
+              "bounds": {
+                "top": "0",
+                "left": "0",
+                "bottom": "0",
+                "right": "0"
+              },
+              "id": "material_textinput_timepicker",
+              "class": "ViewStub"
+            },
+            {
+              "bounds": {
+                "top": "1344",
+                "left": "36",
+                "bottom": "1488",
+                "right": "180"
+              },
+              "id": "material_timepicker_mode_button",
+              "class": "MaterialButton"
+            },
+            {
+              "bounds": {
+                "top": "1350",
+                "left": "513",
+                "bottom": "1494",
+                "right": "744"
+              },
+              "id": "material_timepicker_cancel_button",
+              "class": "MaterialButton"
+            },
+            {
+              "bounds": {
+                "top": "1350",
+                "left": "768",
+                "bottom": "1494",
+                "right": "960"
+              },
+              "id": "material_timepicker_ok_button",
+              "class": "MaterialButton"
+            }
+          ],
+          "bounds": {
+            "top": "0",
+            "left": "0",
+            "bottom": "1536",
+            "right": "984"
+          },
+          "class": "ConstraintLayout"
+        }],
+        "bounds": {
+          "top": "0",
+          "left": "0",
+          "bottom": "1536",
+          "right": "984"
+        },
+        "id": "content",
+        "class": "FrameLayout"
+      }
+    ],
+    "bounds": {
+      "top": "0",
+      "left": "0",
+      "bottom": "1536",
+      "right": "984"
+    },
+    "class": "LinearLayout"
+  }
+}

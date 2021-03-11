@@ -9,69 +9,69 @@
     tools:ignore="MissingConstraints">
 
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:id="@+id/layout"
-       android:clipChildren="false"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.5"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent">
+<!--   <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--       android:id="@+id/layout"-->
+<!--       android:clipChildren="false"-->
+<!--       android:layout_width="wrap_content"-->
+<!--       android:layout_height="wrap_content"-->
+<!--       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--       app:layout_constraintEnd_toEndOf="parent"-->
+<!--       app:layout_constraintHorizontal_bias="0.5"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintTop_toTopOf="parent">-->
 
-      <TextView
-          android:id="@+id/textview1"
-          android:background="#FF0"
-          android:gravity="center"
-          android:text="This ABC..."
-          android:textSize="32sp"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
+<!--      <TextView-->
+<!--          android:id="@+id/textview1"-->
+<!--          android:background="#FF0"-->
+<!--          android:gravity="center"-->
+<!--          android:text="This ABC..."-->
+<!--          android:textSize="32sp"-->
+<!--          app:layout_constraintBottom_toBottomOf="parent"-->
+<!--          app:layout_constraintStart_toStartOf="parent"-->
+<!--          app:layout_constraintTop_toTopOf="parent" />-->
 
-      <TextView
-          android:id="@+id/textview2"
-          android:background="#F00"
-          android:text="*"
-          android:textSize="32sp"
-          app:layout_constraintCircleAngle="45"
-          app:layout_constraintCircle="@id/textview1"
-          app:layout_constraintCircleRadius="80dp"
-          app:layout_wrapBehaviorInParent="skipped" />
+<!--      <TextView-->
+<!--          android:id="@+id/textview2"-->
+<!--          android:background="#F00"-->
+<!--          android:text="*"-->
+<!--          android:textSize="32sp"-->
+<!--          app:layout_constraintCircleAngle="45"-->
+<!--          app:layout_constraintCircle="@id/textview1"-->
+<!--          app:layout_constraintCircleRadius="80dp"-->
+<!--          app:layout_wrapBehaviorInParent="skipped" />-->
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+<!--   </androidx.constraintlayout.widget.ConstraintLayout>-->
 
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:id="@+id/layout2"
-       android:layout_width="70dp"
-       android:layout_height="wrap_content"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.5"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintVertical_bias="0.69">
+<!--   <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--       android:id="@+id/layout2"-->
+<!--       android:layout_width="70dp"-->
+<!--       android:layout_height="wrap_content"-->
+<!--       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--       app:layout_constraintEnd_toEndOf="parent"-->
+<!--       app:layout_constraintHorizontal_bias="0.5"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintTop_toTopOf="parent"-->
+<!--       app:layout_constraintVertical_bias="0.69">-->
 
-      <TextView
-          android:id="@+id/textview1"
-          android:background="#FF0"
-          android:gravity="center"
-          android:text="This ABC..."
-          android:textSize="32sp"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
+<!--      <TextView-->
+<!--          android:id="@+id/textview1"-->
+<!--          android:background="#FF0"-->
+<!--          android:gravity="center"-->
+<!--          android:text="This ABC..."-->
+<!--          android:textSize="32sp"-->
+<!--          app:layout_constraintStart_toStartOf="parent"-->
+<!--          app:layout_constraintTop_toTopOf="parent" />-->
 
-      <TextView
-          android:id="@+id/textview2"
-          android:background="#F00"
-          android:text="*"
-          android:textSize="32sp"
-          app:layout_constraintCircle="@id/textview1"
-          app:layout_constraintCircleAngle="45"
-          app:layout_constraintCircleRadius="80dp"
-          app:layout_wrapBehaviorInParent="included" />
+<!--      <TextView-->
+<!--          android:id="@+id/textview2"-->
+<!--          android:background="#F00"-->
+<!--          android:text="*"-->
+<!--          android:textSize="32sp"-->
+<!--          app:layout_constraintCircle="@id/textview1"-->
+<!--          app:layout_constraintCircleAngle="45"-->
+<!--          app:layout_constraintCircleRadius="80dp"-->
+<!--          app:layout_wrapBehaviorInParent="included" />-->
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
+<!--   </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

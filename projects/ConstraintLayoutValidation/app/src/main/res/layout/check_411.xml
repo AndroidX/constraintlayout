@@ -7,45 +7,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-   <TextView
-       android:id="@+id/textview1"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:background="#FF0"
-       android:textSize="32sp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBaseline_toTopOf="@+id/view"
-       android:text="This Ppq..." />
+<!--   <TextView-->
+<!--       android:id="@+id/textview1"-->
+<!--       android:layout_width="wrap_content"-->
+<!--       android:layout_height="wrap_content"-->
+<!--       android:background="#FF0"-->
+<!--       android:textSize="32sp"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintBaseline_toTopOf="@+id/view"-->
+<!--       android:text="This Ppq..." />-->
 
-   <TextView
-       android:id="@+id/textview2"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:background="#FF0"
-       android:textSize="32sp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBaseline_toBottomOf="@+id/view"
-       android:text="This Ppq..." />
+<!--   <TextView-->
+<!--       android:id="@+id/textview2"-->
+<!--       android:layout_width="wrap_content"-->
+<!--       android:layout_height="wrap_content"-->
+<!--       android:background="#FF0"-->
+<!--       android:textSize="32sp"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintBaseline_toBottomOf="@+id/view"-->
+<!--       android:text="This Ppq..." />-->
 
-   <TextView
-       android:id="@+id/textview3"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:background="#FF0"
-       android:textSize="32sp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintBaseline_toBaselineOf="@+id/view"
-       android:text="This Ppq..." />
+<!--   <TextView-->
+<!--       android:id="@+id/textview3"-->
+<!--       android:layout_width="wrap_content"-->
+<!--       android:layout_height="wrap_content"-->
+<!--       android:background="#FF0"-->
+<!--       android:textSize="32sp"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintBaseline_toBaselineOf="@+id/view"-->
+<!--       android:text="This Ppq..." />-->
 
-   <TextView
-      android:id="@+id/view"
-      android:layout_width="100dp"
-      android:layout_height="100dp"
-      android:background="#F00"
-      android:textSize="32sp"
-      android:text="AbPpq"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"/>
+<!--   <TextView-->
+<!--      android:id="@+id/view"-->
+<!--      android:layout_width="100dp"-->
+<!--      android:layout_height="100dp"-->
+<!--      android:background="#F00"-->
+<!--      android:textSize="32sp"-->
+<!--      android:text="AbPpq"-->
+<!--      app:layout_constraintTop_toTopOf="parent"-->
+<!--      app:layout_constraintBottom_toBottomOf="parent"-->
+<!--      app:layout_constraintEnd_toEndOf="parent"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

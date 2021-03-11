@@ -15,8 +15,10 @@
  */
 package androidx.constraintlayout.validation;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Build;
@@ -36,16 +38,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.core.Metrics;
+//import androidx.constraintlayout.core.Metrics;
 import androidx.constraintlayout.widget.ConstraintLayout;
 //import androidx.constraintlayout.core.Metrics;
 import androidx.core.view.ViewCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.android.material.timepicker.MaterialTimePicker;
+import com.google.android.material.timepicker.TimeFormat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
     HashMap<String, Integer> mTestsDelay = new HashMap<>();
     HashSet<String> mSkippedTests = new HashSet<>();
 
-    TestLayout testLayout_252 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_252 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         int left = ((ViewGroup) view.getParent()).getPaddingLeft() + layoutParams.leftMargin;
@@ -89,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return false;
     };
 
-    TestLayout testLayout_253 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_253 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         int left = ((ViewGroup) view.getParent()).getPaddingLeft() + layoutParams.leftMargin;
@@ -104,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return false;
     };
 
-    TestLayout testLayout_265 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_265 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         int left = ((ViewGroup) view.getParent()).getPaddingLeft() + layoutParams.leftMargin;
@@ -125,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return true;
     };
 
-    TestLayout testLayout_335 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_335 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         View view1 = view.findViewById(R.id.button1);
@@ -138,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return true;
     };
 
-    TestLayout testLayout_339 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_339 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         RecyclerView list_view = view.findViewById(R.id.list_view);
         ArrayList<String> xVals = new ArrayList<String>();
         xVals.add("Test String 1");
@@ -152,7 +157,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return false;
     };
 
-    TestLayout testLayout_376 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_376 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         ConstraintLayout root = findViewById(R.id.root);
         root.setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
                 View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
@@ -188,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return false;
     };
 
-    TestLayout testLayout_397 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_397 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         Fragment fragment = new CLBugFragment();
         view.postDelayed(() -> {
             getSupportFragmentManager().beginTransaction().add(R.id.host, fragment).commit();
@@ -196,7 +201,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return true;
     };
 
-    TestLayout testLayout_398 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_398 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         View button = view.findViewById(R.id.button2);
@@ -207,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return true;
     };
 
-    TestLayout testLayout_406 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_406 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         //Layer layer = view.findViewById(R.id.layer);
@@ -221,7 +226,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return true;
     };
 
-    TestLayout testLayout_408 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_408 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         View viewToRemove = findViewById(R.id.issue);
@@ -232,7 +237,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return true;
     };
 
-    TestLayout testLayout_420 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams) -> {
+    TestLayout testLayout_420 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
         view.forceLayout();
         view.measure(widthMeasureSpec, heightMeasureSpec);
         View viewToResize = findViewById(R.id.issue);
@@ -241,6 +246,19 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
             layoutParamsView.height = 400;
             viewToResize.setLayoutParams(layoutParamsView);
         }, 20);
+        return true;
+    };
+
+    TestLayout testLayout_428 = (view, mode, widthMeasureSpec, heightMeasureSpec, layoutParams, rootView) -> {
+        MaterialTimePicker picker = new MaterialTimePicker.Builder().setTimeFormat(TimeFormat.CLOCK_12H)
+                .setHour(12)
+                .setMinute(10)
+                .setTitleText("Select Appointment time")
+                .build();
+        picker.show(getSupportFragmentManager(), "time");
+        if (rootView != null) {
+            rootView[0] = picker;//.getDialog().getWindow().getDecorView();
+        }
         return true;
     };
 
@@ -268,6 +286,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
 
         String[] result = new String[1];
         int[] measureSpecs = new int[2];
+        Fragment[] fragment = new Fragment[1];
 
         int delay = 0;
         if (mTestsDelay.containsKey(layoutName)) {
@@ -280,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
                 FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view.getLayoutParams();
                 if (mTests.containsKey(layoutName)) {
                     TestLayout testLayout = mTests.get(layoutName);
-                    if (testLayout.apply(view, mode, measureSpecs[0], measureSpecs[1], layoutParams)) {
+                    if (testLayout.apply(view, mode, measureSpecs[0], measureSpecs[1], layoutParams, fragment)) {
                         return;
                     }
                 }
@@ -291,6 +310,13 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
                     Thread.sleep(timeout);
                     server.runOnUiAndWait(activity, () -> {
                         ViewGroup host = activity.findViewById(android.R.id.content);
+                        if (fragment[0] != null && fragment[0] instanceof DialogFragment) {
+                            DialogFragment dialogFragment = (DialogFragment) fragment[0];
+                            View decorView = dialogFragment.getDialog().getWindow().getDecorView();
+                            if (decorView != null && decorView instanceof ViewGroup) {
+                                host = (ViewGroup) decorView;
+                            }
+                        }
                         View view = host.getChildAt(0);
                         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) view.getLayoutParams();
                         result[0] = measureLayout(view, layoutParams, measureSpecs[0], measureSpecs[1]);
@@ -306,7 +332,7 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
                 boolean validTest = true;
                 if (mTests.containsKey(layoutName)) {
                     TestLayout testLayout = mTests.get(layoutName);
-                    validTest = testLayout.apply(view, mode, measureSpecs[0], measureSpecs[1], layoutParams);
+                    validTest = testLayout.apply(view, mode, measureSpecs[0], measureSpecs[1], layoutParams, fragment);
                     validTest = true;
                 }
                 if (validTest) {
@@ -386,9 +412,9 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
     private String measureLayout(View view, FrameLayout.LayoutParams layoutParams, int widthMeasureSpec, int heightMeasureSpec) {
         long start = System.nanoTime();
         int iterations = ITERATIONS;
-        androidx.constraintlayout.core.Metrics metrics = new Metrics();
+//        androidx.constraintlayout.core.Metrics metrics = new Metrics();
         if (view instanceof ConstraintLayout) {
-            ((ConstraintLayout) view).fillMetrics(metrics);
+//            ((ConstraintLayout) view).fillMetrics(metrics);
             //metrics.measuresLayoutDuration = 0;
 //            metrics.grouping = 0;
 //            metrics.layouts = 0;
@@ -405,12 +431,12 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
 //        totalGrouping += metrics.grouping;
 //        totalLayouts += metrics.layouts;
 
-        long measuresDuration = metrics.measuresWidgetsDuration / iterations;
-        long layoutDuration = metrics.measuresLayoutDuration / iterations;
-        //System.out.println("total duration = " + duration + " layout " + layoutDuration + " measures " + measuresDuration);
-        //duration = layoutDuration;// - measuresDuration;
-        totalMeasuredWidgets += (metrics.measuredWidgets / iterations);
-        totalMeasuredMatchWidgets += (metrics.measuredMatchWidgets / iterations);
+//        long measuresDuration = metrics.measuresWidgetsDuration / iterations;
+//        long layoutDuration = metrics.measuresLayoutDuration / iterations;
+//        //System.out.println("total duration = " + duration + " layout " + layoutDuration + " measures " + measuresDuration);
+//        //duration = layoutDuration;// - measuresDuration;
+//        totalMeasuredWidgets += (metrics.measuredWidgets / iterations);
+//        totalMeasuredMatchWidgets += (metrics.measuredMatchWidgets / iterations);
 //        System.out.println("Total Measures: " + totalMeasuredWidgets
         //              + " matched " + totalMeasuredMatchWidgets);
 
@@ -562,12 +588,18 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         return result;
     }
 
+    @SuppressLint("ResourceType")
     private String serialize(View view) {
         String result = "{";
         String name = view.getClass().getSimpleName();
         result += pair("class", name) + ", ";
-        if (view.getId() != View.NO_ID) {
-            String viewId = view.getResources().getResourceName(view.getId());
+        if (view.getId() != View.NO_ID && view.getId() > 1) {
+            String viewId;
+            try {
+                viewId = view.getResources().getResourceName(view.getId());
+            } catch (Resources.NotFoundException e) {
+                viewId = "NOT_FOUND";
+            }
             viewId = stripId(viewId);
             result += pair("id", viewId) + ", ";
         }
@@ -628,11 +660,13 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
         mTests.put("check_406", testLayout_406);
         mTests.put("check_408", testLayout_408);
         mTests.put("check_420", testLayout_420);
+        mTests.put("check_428", testLayout_428);
 
         mTestsDelay.put("check_265", 1500);
         mTestsDelay.put("check_335", 1500);
         mTestsDelay.put("check_397", 1500);
         mTestsDelay.put("check_420", 500);
+        mTestsDelay.put("check_428", 500);
 
         // We skip those for now
         // (depends on moving to LayoutParams instead of MarginLayoutParams)
@@ -718,6 +752,6 @@ public class MainActivity extends AppCompatActivity implements Server.Requests {
     }
 
     interface TestLayout {
-        boolean apply(View view, String mode, int widthMeasureSpec, int heightMeasureSpec, FrameLayout.LayoutParams layoutParams);
+        boolean apply(View view, String mode, int widthMeasureSpec, int heightMeasureSpec, FrameLayout.LayoutParams layoutParams, Fragment[] fragment);
     }
 }

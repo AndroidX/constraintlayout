@@ -7,17 +7,17 @@
     android:layout_height="match_parent"
     tools:ignore="MissingConstraints">
 
-   <TextView
-       android:id="@+id/textview1"
-       android:background="#FF0"
-       android:gravity="center"
-       android:text="This ABC..."
-       android:textSize="32sp"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintBottom_toBottomOf="parent"
-       app:layout_constraintTop_toTopOf="parent"
-       app:layout_constraintWidth="parent=0.8"
-       app:layout_constraintHeight="ratio=1:1"/>
+<!--   <TextView-->
+<!--       android:id="@+id/textview1"-->
+<!--       android:background="#FF0"-->
+<!--       android:gravity="center"-->
+<!--       android:text="This ABC..."-->
+<!--       android:textSize="32sp"-->
+<!--       app:layout_constraintStart_toStartOf="parent"-->
+<!--       app:layout_constraintEnd_toEndOf="parent"-->
+<!--       app:layout_constraintBottom_toBottomOf="parent"-->
+<!--       app:layout_constraintTop_toTopOf="parent"-->
+<!--       app:layout_constraintWidth="parent=0.8"-->
+<!--       app:layout_constraintHeight="ratio=1:1"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
