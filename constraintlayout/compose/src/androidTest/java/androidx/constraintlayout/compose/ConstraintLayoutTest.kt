@@ -17,6 +17,7 @@
 package androidx.constraintlayout.compose
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -105,7 +106,8 @@ class ConstraintLayoutTest {
                             centerTo(parent)
                             width = Dimension.value(1.dp)
                             height = Dimension.fillToConstraints
-                        }.onGloballyPositioned { coordinates ->
+                        }
+                        .onGloballyPositioned { coordinates ->
                             dividerSize.value = coordinates.size
                         }
                 )
@@ -165,7 +167,8 @@ class ConstraintLayoutTest {
                             centerTo(parent)
                             width = Dimension.value(1.dp)
                             height = Dimension.fillToConstraints
-                        }.onGloballyPositioned { coordinates ->
+                        }
+                        .onGloballyPositioned { coordinates ->
                             dividerSize.value = coordinates.size
                         }
                 )
@@ -497,7 +500,9 @@ class ConstraintLayoutTest {
             ) {
                 for (i in 0..2) {
                     Box(
-                        Modifier.layoutId("box$i").size(boxSize.toDp(), boxSize.toDp())
+                        Modifier
+                            .layoutId("box$i")
+                            .size(boxSize.toDp(), boxSize.toDp())
                             .onGloballyPositioned {
                                 position[i].value = it.positionInRoot()
                             }
@@ -632,10 +637,12 @@ class ConstraintLayoutTest {
                 guidelines.forEachIndexed { index, guideline ->
                     val ref = createRef()
                     Box(
-                        Modifier.size(1.dp)
+                        Modifier
+                            .size(1.dp)
                             .constrainAs(ref) {
                                 absoluteLeft.linkTo(guideline)
-                            }.onGloballyPositioned {
+                            }
+                            .onGloballyPositioned {
                                 position[index] = it.positionInParent().x
                             }
                     )
@@ -678,10 +685,12 @@ class ConstraintLayoutTest {
                     guidelines.forEachIndexed { index, guideline ->
                         val ref = createRef()
                         Box(
-                            Modifier.size(1.dp)
+                            Modifier
+                                .size(1.dp)
                                 .constrainAs(ref) {
                                     absoluteLeft.linkTo(guideline)
-                                }.onGloballyPositioned {
+                                }
+                                .onGloballyPositioned {
                                     position[index] = it.positionInParent().x
                                 }
                         )
@@ -714,13 +723,15 @@ class ConstraintLayoutTest {
                 val guideline1 = createGuidelineFromAbsoluteLeft(offset)
                 val guideline2 = createGuidelineFromAbsoluteRight(offset)
                 Box(
-                    Modifier.size(1.toDp())
+                    Modifier
+                        .size(1.toDp())
                         .constrainAs(box1) {
                             absoluteLeft.linkTo(guideline1)
                         }
                 )
                 Box(
-                    Modifier.size(1.toDp())
+                    Modifier
+                        .size(1.toDp())
                         .constrainAs(box2) {
                             absoluteLeft.linkTo(guideline2)
                         }
@@ -736,10 +747,12 @@ class ConstraintLayoutTest {
                 barriers.forEachIndexed { index, barrier ->
                     val ref = createRef()
                     Box(
-                        Modifier.size(1.dp)
+                        Modifier
+                            .size(1.dp)
                             .constrainAs(ref) {
                                 absoluteLeft.linkTo(barrier)
-                            }.onGloballyPositioned {
+                            }
+                            .onGloballyPositioned {
                                 position[index] = it.positionInParent().x
                             }
                     )
@@ -768,13 +781,15 @@ class ConstraintLayoutTest {
                     val guideline1 = createGuidelineFromAbsoluteLeft(offset)
                     val guideline2 = createGuidelineFromAbsoluteRight(offset)
                     Box(
-                        Modifier.size(1.toDp())
+                        Modifier
+                            .size(1.toDp())
                             .constrainAs(box1) {
                                 absoluteLeft.linkTo(guideline1)
                             }
                     )
                     Box(
-                        Modifier.size(1.toDp())
+                        Modifier
+                            .size(1.toDp())
                             .constrainAs(box2) {
                                 absoluteLeft.linkTo(guideline2)
                             }
@@ -790,10 +805,12 @@ class ConstraintLayoutTest {
                     barriers.forEachIndexed { index, barrier ->
                         val ref = createRef()
                         Box(
-                            Modifier.size(1.dp)
+                            Modifier
+                                .size(1.dp)
                                 .constrainAs(ref) {
                                     absoluteLeft.linkTo(barrier)
-                                }.onGloballyPositioned {
+                                }
+                                .onGloballyPositioned {
                                     position[index] = it.positionInParent().x
                                 }
                         )
@@ -843,7 +860,8 @@ class ConstraintLayoutTest {
                 val box = createRef()
                 val guideline = createGuidelineFromAbsoluteLeft(offset)
                 Box(
-                    Modifier.size(1.toDp())
+                    Modifier
+                        .size(1.toDp())
                         .constrainAs(box) {
                             absoluteLeft.linkTo(guideline)
                         }
@@ -854,10 +872,12 @@ class ConstraintLayoutTest {
                 anchors.forEachIndexed { index, anchor ->
                     val ref = createRef()
                     Box(
-                        Modifier.size(1.toDp())
+                        Modifier
+                            .size(1.toDp())
                             .constrainAs(ref) {
                                 anchor()
-                            }.onGloballyPositioned {
+                            }
+                            .onGloballyPositioned {
                                 position[index] = it.positionInParent().x
                             }
                     )
@@ -897,7 +917,8 @@ class ConstraintLayoutTest {
                     val box = createRef()
                     val guideline = createGuidelineFromAbsoluteLeft(offset)
                     Box(
-                        Modifier.size(1.toDp())
+                        Modifier
+                            .size(1.toDp())
                             .constrainAs(box) {
                                 absoluteLeft.linkTo(guideline)
                             }
@@ -908,10 +929,12 @@ class ConstraintLayoutTest {
                     anchors.forEachIndexed { index, anchor ->
                         val ref = createRef()
                         Box(
-                            Modifier.size(1.toDp())
+                            Modifier
+                                .size(1.toDp())
                                 .constrainAs(ref) {
                                     anchor()
-                                }.onGloballyPositioned {
+                                }
+                                .onGloballyPositioned {
                                     position[index] = it.positionInParent().x
                                 }
                         )
@@ -952,7 +975,8 @@ class ConstraintLayoutTest {
                 val guideline1 = createGuidelineFromAbsoluteLeft(offset)
                 val guideline2 = createGuidelineFromTop(offset)
                 Box(
-                    Modifier.size(1.toDp())
+                    Modifier
+                        .size(1.toDp())
                         .constrainAs(box) {
                             absoluteLeft.linkTo(guideline1)
                             top.linkTo(guideline2)
@@ -965,21 +989,25 @@ class ConstraintLayoutTest {
                 val bottomBarrier = createBottomBarrier(box, margin = 10.toDp())
 
                 Box(
-                    Modifier.size(1.dp)
+                    Modifier
+                        .size(1.dp)
                         .constrainAs(createRef()) {
                             absoluteLeft.linkTo(leftBarrier)
                             top.linkTo(topBarrier)
-                        }.onGloballyPositioned {
+                        }
+                        .onGloballyPositioned {
                             position[0] = it.positionInParent()
                         }
                 )
 
                 Box(
-                    Modifier.size(1.dp)
+                    Modifier
+                        .size(1.dp)
                         .constrainAs(createRef()) {
                             absoluteLeft.linkTo(rightBarrier)
                             top.linkTo(bottomBarrier)
-                        }.onGloballyPositioned {
+                        }
+                        .onGloballyPositioned {
                             position[1] = it.positionInParent()
                         }
                 )
@@ -998,12 +1026,14 @@ class ConstraintLayoutTest {
             ConstraintLayout(Modifier.width(10.dp)) {
                 val box = createRef()
                 Box(
-                    Modifier.constrainAs(box) {
-                        start.linkTo(parent.end)
-                        start.linkTo(parent.start)
-                    }.onGloballyPositioned {
-                        Assert.assertEquals(0f, it.positionInParent().x)
-                    }
+                    Modifier
+                        .constrainAs(box) {
+                            start.linkTo(parent.end)
+                            start.linkTo(parent.start)
+                        }
+                        .onGloballyPositioned {
+                            Assert.assertEquals(0f, it.positionInParent().x)
+                        }
                 )
             }
         }
@@ -1025,22 +1055,28 @@ class ConstraintLayoutTest {
                 createHorizontalChain(box1, box2, chainStyle = ChainStyle.SpreadInside)
                 createVerticalChain(box1, box2, chainStyle = ChainStyle.SpreadInside)
                 Box(
-                    Modifier.size(boxSize).constrainAs(box1) {
-                        start.linkTo(startGuideline)
-                        top.linkTo(topGuideline)
-                    }.onGloballyPositioned {
-                        Assert.assertEquals(20f, it.boundsInParent().left)
-                        Assert.assertEquals(20f, it.boundsInParent().top)
-                    }
+                    Modifier
+                        .size(boxSize)
+                        .constrainAs(box1) {
+                            start.linkTo(startGuideline)
+                            top.linkTo(topGuideline)
+                        }
+                        .onGloballyPositioned {
+                            Assert.assertEquals(20f, it.boundsInParent().left)
+                            Assert.assertEquals(20f, it.boundsInParent().top)
+                        }
                 )
                 Box(
-                    Modifier.size(boxSize).constrainAs(box2) {
-                        end.linkTo(endGuideline)
-                        bottom.linkTo(bottomGuideline)
-                    }.onGloballyPositioned {
-                        Assert.assertEquals(80f, it.boundsInParent().right)
-                        Assert.assertEquals(80f, it.boundsInParent().bottom)
-                    }
+                    Modifier
+                        .size(boxSize)
+                        .constrainAs(box2) {
+                            end.linkTo(endGuideline)
+                            bottom.linkTo(bottomGuideline)
+                        }
+                        .onGloballyPositioned {
+                            Assert.assertEquals(80f, it.boundsInParent().right)
+                            Assert.assertEquals(80f, it.boundsInParent().bottom)
+                        }
                 )
             }
         }
@@ -1128,7 +1164,10 @@ class ConstraintLayoutTest {
                 ConstraintLayout {
                     val (box1, box2) = createRefs()
                     val barrier = createBottomBarrier(box1)
-                    Box(Modifier.height(if (smallSize) 30.dp else 40.dp).constrainAs(box1) {})
+                    Box(
+                        Modifier
+                            .height(if (smallSize) 30.dp else 40.dp)
+                            .constrainAs(box1) {})
                     Box(Modifier)
                 }
             }
@@ -1212,8 +1251,16 @@ class ConstraintLayoutTest {
                     createVerticalChain(box1, box2)
                 }
 
-                Box(Modifier.size(sizeDp).then(box1PositionUpdater).constrainAs(box1) {})
-                Box(Modifier.size(sizeDp).then(box2PositionUpdater).constrainAs(box2) {})
+                Box(
+                    Modifier
+                        .size(sizeDp)
+                        .then(box1PositionUpdater)
+                        .constrainAs(box1) {})
+                Box(
+                    Modifier
+                        .size(sizeDp)
+                        .then(box2PositionUpdater)
+                        .constrainAs(box2) {})
             }
         }
         rule.runOnIdle {
@@ -1245,15 +1292,22 @@ class ConstraintLayoutTest {
                 val topBarrier = createTopBarrier(box1)
                 val bottomBarrier = createBottomBarrier(box1)
 
-                Box(Modifier.size(sizeDp).then(box1PositionUpdater).constrainAs(box1) {})
                 Box(
-                    Modifier.size(sizeDp).then(box2PositionUpdater).constrainAs(box2) {
-                        if (first) {
-                            top.linkTo(topBarrier)
-                        } else {
-                            top.linkTo(bottomBarrier)
+                    Modifier
+                        .size(sizeDp)
+                        .then(box1PositionUpdater)
+                        .constrainAs(box1) {})
+                Box(
+                    Modifier
+                        .size(sizeDp)
+                        .then(box2PositionUpdater)
+                        .constrainAs(box2) {
+                            if (first) {
+                                top.linkTo(topBarrier)
+                            } else {
+                                top.linkTo(bottomBarrier)
+                            }
                         }
-                    }
                 )
             }
         }
@@ -1261,10 +1315,93 @@ class ConstraintLayoutTest {
             assertEquals(Offset.Zero, box1Position)
             assertEquals(Offset.Zero, box2Position)
             first = false
+            Log.d("MIHAI", "Se schimba!")
         }
         rule.runOnIdle {
             assertEquals(Offset.Zero, box1Position)
             assertEquals(Offset(0f, size.toFloat()), box2Position)
+        }
+    }
+
+    @Test
+    fun testConstraintLayout_doesNotRebuildFromDsl_whenResizedOnly() = with(rule.density) {
+        var size by mutableStateOf(100.dp)
+        var builds = 0
+        rule.setContent {
+            val onBuild = remember { { ++builds } }
+            ConstraintLayout(Modifier.size(size)) {
+                val box = createRef()
+                Box(Modifier.constrainAs(box) { onBuild() })
+            }
+        }
+
+        rule.runOnIdle {
+            assertEquals(1, builds)
+            size = 200.dp
+        }
+
+        rule.runOnIdle {
+            assertEquals(1, builds)
+        }
+    }
+
+    @Test
+    fun testConstraintLayout_rebuildsConstraintSet_whenHelpersChange() = with(rule.density) {
+        var offset by mutableStateOf(10.dp)
+        var builds = 0
+        var obtainedX = 0f
+        rule.setContent {
+            ConstraintLayout {
+                val box = createRef()
+                val g = createGuidelineFromStart(offset)
+                Box(
+                    Modifier
+                        .constrainAs(box) {
+                            start.linkTo(g)
+                            ++builds
+                        }
+                        .onGloballyPositioned { obtainedX = it.positionInRoot().x })
+            }
+        }
+
+        rule.runOnIdle {
+            assertEquals(offset.roundToPx().toFloat(), obtainedX)
+            offset = 20.dp
+            assertEquals(1, builds)
+        }
+
+        rule.runOnIdle {
+            assertEquals(offset.roundToPx().toFloat(), obtainedX)
+            assertEquals(2, builds)
+        }
+    }
+
+    @Test
+    fun testConstraintLayout_rebuilds_whenLambdaChanges() = with(rule.density) {
+        var first by mutableStateOf(true)
+        var obtainedX = 0f
+        rule.setContent {
+            ConstraintLayout {
+                val l1 = remember<ConstrainScope.() -> Unit> {
+                    { start.linkTo(parent.start, 10.dp) }
+                }
+                val l2 = remember<ConstrainScope.() -> Unit> {
+                    { start.linkTo(parent.start, 20.dp) }
+                }
+                val box = createRef()
+                Box(Modifier.constrainAs(box, if (first) l1 else l2).onGloballyPositioned {
+                    obtainedX = it.positionInRoot().x
+                })
+            }
+        }
+
+        rule.runOnIdle {
+            assertEquals(10.dp.roundToPx().toFloat(), obtainedX)
+            first = false
+        }
+
+        rule.runOnIdle {
+            assertEquals(20.dp.roundToPx().toFloat(), obtainedX)
         }
     }
 
@@ -1290,7 +1427,10 @@ class ConstraintLayoutTest {
         var box2Position = IntOffset.Zero
         rule.setContent {
             ConstraintLayout(if (first) constraintSet1 else constraintSet2) {
-                Box(Modifier.size(box1Size.toDp()).layoutId("box1"))
+                Box(
+                    Modifier
+                        .size(box1Size.toDp())
+                        .layoutId("box1"))
                 Box(
                     Modifier
                         .layoutId("box2")
@@ -1328,7 +1468,10 @@ class ConstraintLayoutTest {
         var box2Position = IntOffset.Zero
         rule.setContent {
             ConstraintLayout(constraintSet) {
-                Box(Modifier.size(box1Size.toDp()).layoutId("box1"))
+                Box(
+                    Modifier
+                        .size(box1Size.toDp())
+                        .layoutId("box1"))
                 Box(
                     Modifier
                         .layoutId("box2")

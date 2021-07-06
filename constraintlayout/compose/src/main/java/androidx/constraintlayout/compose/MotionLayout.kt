@@ -295,6 +295,7 @@ internal class MotionMeasurer : Measurer() {
                                      measurables: List<Measurable>, constraints: Constraints
     ) {
         state.reset()
+        buildMapping(measurables)
         constraintSetStart.applyTo(state, measurables)
         state.apply(root)
         root.width = constraints.maxWidth
@@ -339,7 +340,8 @@ internal class MotionMeasurer : Measurer() {
             motionProgress = progress
             if (transition.isEmpty() || frameCache.isEmpty()) {
                 transition.clear()
-                reset()
+                resetMeasureState()
+                state.reset()
                 // Define the size of the ConstraintLayout.
                 state.width(
                     if (constraints.hasFixedWidth) {
