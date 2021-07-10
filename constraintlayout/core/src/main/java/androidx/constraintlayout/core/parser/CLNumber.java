@@ -22,12 +22,17 @@ public class CLNumber extends CLElement {
     super(content);
   }
 
+  public CLNumber(float value) {
+    super(null);
+    this.value = value;
+  }
+
   public static CLElement allocate(char[] content) {
     return new CLNumber(content);
   }
 
   protected String toJSON() {
-    float value = Float.parseFloat(content());
+    float value = getFloat();
     int intValue = (int) value;
     if ((float) intValue == value) {
       return "" + intValue;
@@ -38,7 +43,7 @@ public class CLNumber extends CLElement {
   protected String toFormattedJSON(int indent, int forceIndent) {
     StringBuilder json = new StringBuilder();
     addIndent(json, indent);
-    float value = Float.parseFloat(content());
+    float value = getFloat();
     int intValue = (int) value;
     if ((float) intValue == value) {
       json.append(intValue);
@@ -69,4 +74,9 @@ public class CLNumber extends CLElement {
     }
     return value;
   }
+
+  public void putValue(float value) {
+    this.value = value;
+  }
+
 }

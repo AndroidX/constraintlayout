@@ -536,6 +536,7 @@ internal class MotionMeasurer : Measurer() {
         json.append(" }")
         layoutInformationReceiver?.setLayoutInformation(json.toString())
     }
+
     @Composable
     fun BoxScope.drawDebug() {
         Canvas(modifier = Modifier.matchParentSize()) {

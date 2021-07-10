@@ -16,30 +16,48 @@
 
 package androidx.constraintLayout.desktop.link
 
+import androidx.constraintLayout.desktop.link.Main.DesignSurfaceModification
+import androidx.constraintlayout.core.parser.CLObject
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
+import java.lang.StringBuilder
 import javax.swing.JButton
 import javax.swing.JCheckBox
 import javax.swing.JPanel
-import javax.swing.event.ChangeListener
+import javax.swing.JSlider
 
 class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
 
     val layoutView = LayoutView()
     val motionLink = link
     var forceDimension = false
+    var designSurfaceModificationCallback: DesignSurfaceModification? = null
 
     init {
         val northPanel = JPanel()
         val toggle = JButton("link resize")
         val liveConnection = JCheckBox("Live connection")
+        val slider = JSlider(0, 100)
         liveConnection.isSelected = true
 
         northPanel.add(toggle)
         northPanel.add(liveConnection)
+        northPanel.add(slider)
+
         add(northPanel, BorderLayout.NORTH)
         add(layoutView, BorderLayout.CENTER)
+
+        slider.addChangeListener {
+            var value = slider.value / 100f
+            if (designSurfaceModificationCallback != null) {
+                var element = designSurfaceModificationCallback!!.getElement("g1")
+                if (element is CLObject) {
+                    element.putNumber("percent", value)
+                    designSurfaceModificationCallback?.updateElement("g1", element)
+                }
+            }
+        }
 
         liveConnection.addChangeListener {
             motionLink.setUpdateLayoutPolling(liveConnection.isSelected)
@@ -64,4 +82,5 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
             }
         }
     }
+
 }

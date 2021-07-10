@@ -84,6 +84,10 @@ public class CLContainer extends CLElement {
     mElements.add(key);
   }
 
+  public void putNumber(String name, float value) {
+    put(name, new CLNumber(value));
+  }
+
   public void remove(String name) {
     ArrayList<CLElement> toRemove = new ArrayList<>();
     for (CLElement element : mElements) {
