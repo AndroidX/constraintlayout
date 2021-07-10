@@ -17,7 +17,6 @@
 package androidx.constraintLayout.desktop.link
 
 import androidx.constraintLayout.desktop.link.Main.DesignSurfaceModification
-import androidx.constraintlayout.core.parser.CLObject
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
@@ -38,7 +37,6 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
         val northPanel = JPanel()
         val toggle = JButton("link resize")
         val liveConnection = JCheckBox("Live connection")
-
         liveConnection.isSelected = true
 
         northPanel.add(timeLineStart)

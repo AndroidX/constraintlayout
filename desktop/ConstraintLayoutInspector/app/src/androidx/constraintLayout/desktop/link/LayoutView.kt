@@ -33,6 +33,7 @@ import java.awt.*
 import java.awt.event.MouseEvent
 import java.awt.event.MouseListener
 import java.awt.event.MouseMotionListener
+import java.awt.geom.GeneralPath
 import java.awt.geom.Path2D
 import java.awt.image.BufferedImage
 import javax.swing.JFrame
@@ -421,6 +422,78 @@ class LayoutView(link: MotionLink) : JPanel(BorderLayout()) {
                 //guideline.addToPicker(scenePicker)
                 verticalGuidelines.add(guideline)
             }
+        }
+    }
+
+    fun setModel(model: CLObject) {
+        if (model.has("ConstraintSets")) {
+            // For now don't operate on MotionScenes
+            return
+        }
+        clearGuidelines()
+        var count = model.size()
+        for (i in 0 until count) {
+            var element = model[i]
+            if (element is CLKey) {
+                val value = element.value
+                if (value is CLObject && value.has("type")) {
+                    var type = value.getString("type")
+                    when (type) {
+                        "hGuideline" -> addGuideline(element.content(), value, ConstraintWidget.HORIZONTAL)
+                        "vGuideline" -> addGuideline(element.content(), value, ConstraintWidget.VERTICAL)
+                    }
+                }
+            }
+        }
+    }
+
+    open class GuidelineModel(val id: String, val p : Float = 0f) {
+        var name = id
+        var percent = p
+    }
+
+    class HorizontalGuideline(val key: String, element: CLObject) : GuidelineModel(key, element.getFloat("percent")) {
+
+        init {
+            val x1Points = intArrayOf(0, 100, 0, 100)
+            val y1Points = intArrayOf(0, 50, 50, 0)
+            val polygon = GeneralPath(
+                GeneralPath.WIND_EVEN_ODD,
+                x1Points.size
+            )
+            polygon.moveTo(x1Points[0], y1Points[0])
+        }
+        fun draw(g: Graphics2D, w: Int, h: Int) {
+            g.setColor(Color.RED)
+            val y = (h * percent).toInt()
+            g.drawLine(0, y, w, y)
+
+            var path = Path2D()
+            Path2D path =
+            g.drawRect()
+        }
+    }
+
+    class VerticalGuideline(val key: String, element: CLObject) : GuidelineModel(key, element.getFloat("percent")) {
+        fun draw(g: Graphics2D, w: Int, h: Int) {
+            g.setColor(Color.RED)
+            val x = (w * percent).toInt()
+            g.drawLine(x, 0, x, h)
+        }
+    }
+
+    var horizontalGuidelines = ArrayList<HorizontalGuideline>()
+    var verticalGuidelines = ArrayList<VerticalGuideline>()
+
+    private fun clearGuidelines() {
+        horizontalGuidelines.clear()
+        verticalGuidelines.clear()
+    }
+
+    private fun addGuideline(name: String, element: CLObject, orientation: Int) {
+        when (orientation) {
+            ConstraintWidget.HORIZONTAL -> horizontalGuidelines.add(HorizontalGuideline(name, element))
+            ConstraintWidget.VERTICAL -> verticalGuidelines.add(VerticalGuideline(name, element))
         }
     }
 
