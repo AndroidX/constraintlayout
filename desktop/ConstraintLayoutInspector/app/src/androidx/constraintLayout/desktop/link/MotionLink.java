@@ -1,5 +1,8 @@
 package androidx.constraintLayout.desktop.link;
 
+import androidx.constraintlayout.core.parser.CLParser;
+import androidx.constraintlayout.core.parser.CLParsingException;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -228,8 +231,13 @@ public class MotionLink {
     }
 
     public void sendContent(String value) {
-        addTask(() -> _sendContent(value));
-        updateLayoutInformation();
+        try {
+            CLParser.parse(value);
+            addTask(() -> _sendContent(value));
+            updateLayoutInformation();
+        } catch (CLParsingException e) {
+
+        }
     }
 
     public void _sendContent(String content) {

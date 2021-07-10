@@ -16,19 +16,23 @@
 
 package androidx.constraintLayout.desktop.link
 
+import androidx.constraintLayout.desktop.link.Main.DesignSurfaceModification
+import androidx.constraintlayout.core.parser.CLObject
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
+import java.lang.StringBuilder
 import javax.swing.JButton
 import javax.swing.JCheckBox
 import javax.swing.JPanel
-import javax.swing.event.ChangeListener
+import javax.swing.JSlider
 
 class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
 
     val layoutView = LayoutView()
     val motionLink = link
     var forceDimension = false
+    var designSurfaceModificationCallback: DesignSurfaceModification? = null
 
     init {
         val northPanel = JPanel()
@@ -38,6 +42,7 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
 
         northPanel.add(toggle)
         northPanel.add(liveConnection)
+
         add(northPanel, BorderLayout.NORTH)
         add(layoutView, BorderLayout.CENTER)
 
@@ -64,4 +69,5 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
             }
         }
     }
+
 }

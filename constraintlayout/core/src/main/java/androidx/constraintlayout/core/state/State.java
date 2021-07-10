@@ -381,6 +381,10 @@ public class State {
         for (Object key : mReferences.keySet()) {
             Reference reference = mReferences.get(key);
             reference.apply();
+            ConstraintWidget widget = reference.getConstraintWidget();
+            if (widget != null && key instanceof String) {
+                widget.stringId = (String) key;
+            }
         }
     }
 }

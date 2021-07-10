@@ -7,30 +7,12 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.ui.platform.ComposeView
-import androidx.constraintlayout.compose.ScreenExample
-import androidx.constraintlayout.compose.ScreenExample10
-import androidx.constraintlayout.compose.ScreenExample11
-import androidx.constraintlayout.compose.ScreenExample12
-import androidx.constraintlayout.compose.ScreenExample13
-import androidx.constraintlayout.compose.ScreenExample14
-import androidx.constraintlayout.compose.ScreenExample15
-import androidx.constraintlayout.compose.ScreenExample16
-import androidx.constraintlayout.compose.ScreenExample17
-import androidx.constraintlayout.compose.ScreenExample18
-import androidx.constraintlayout.compose.ScreenExample19
-import androidx.constraintlayout.compose.ScreenExample2
-import androidx.constraintlayout.compose.ScreenExample3
-import androidx.constraintlayout.compose.ScreenExample4
-import androidx.constraintlayout.compose.ScreenExample5
-import androidx.constraintlayout.compose.ScreenExample6
-import androidx.constraintlayout.compose.ScreenExample7
-import androidx.constraintlayout.compose.ScreenExample8
-import androidx.constraintlayout.compose.ScreenExample9
+import androidx.constraintlayout.compose.*
 
 class MainActivity : AppCompatActivity() {
     private var mFrameLayout: FrameLayout? = null
-    private var composeNum = 4
-    private var MAX = 33
+    private var composeNum = 20
+    private var MAX = 34
     var map = HashMap<Int, String>();
     val debugServer = DebugServer()
 
@@ -72,22 +54,23 @@ class MainActivity : AppCompatActivity() {
                 17 -> ScreenExample17()
                 18 -> ScreenExample18()
                 19 -> ScreenExample19()
-                20 -> MotionExample1()
-                21 -> MotionExample2()
-                22 -> MotionExample3()
-                23 -> MotionExample4()
-                24 -> MotionExample5()
-                25 -> MotionExample6()
+                20 -> ScreenExample20()
+                21 -> MotionExample1()
+                22 -> MotionExample2()
+                23 -> MotionExample3()
+                24 -> MotionExample4()
+                25 -> MotionExample5()
+                26 -> MotionExample6()
 
-                26 -> AttributesScale()
-                27 -> AttributesTranslationXY()
-                28 -> AttributesRotationZ()
-                29 -> AttributesRotationXY()
+                27 -> AttributesScale()
+                28 -> AttributesTranslationXY()
+                29 -> AttributesRotationZ()
+                30 -> AttributesRotationXY()
 
-                30 -> CycleScale()
-                31 -> CycleTranslationXY()
-                32 -> CycleRotationZ()
-                33 -> CycleRotationXY()
+                31 -> CycleScale()
+                32 -> CycleTranslationXY()
+                33 -> CycleRotationZ()
+                34 -> CycleRotationXY()
                 else -> {
                     composeNum = 0
                     ScreenExample()

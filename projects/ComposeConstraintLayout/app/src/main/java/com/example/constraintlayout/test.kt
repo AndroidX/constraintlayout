@@ -1475,7 +1475,56 @@ public fun ScreenExample19() {
     }
 }
 
-
+@Preview(group = "guidelines")
+@Composable
+public fun ScreenExample20() {
+    ConstraintLayout(
+        ConstraintSet("""
+        {
+          Debug: {
+            name: 'guidelines'
+          },
+          Variables: {
+            margin: 8
+          },
+          g1: {
+            type: 'hGuideline',
+            percent: 0.34
+          },
+          g2: {
+            type: 'hGuideline',
+            percent: 0.63
+          },
+          g5: {
+            type: 'vGuideline',
+            percent: 0.57
+          },
+          g6: {
+            type: 'vGuideline',
+            percent: 0.29
+          },
+          button: {
+            width: 'spread',
+            height: 'spread',
+            top: ['g1', 'bottom', 'margin'],
+            bottom: ['g2', 'top', 'margin'],
+            start: ['g6', 'start', 'margin'],
+            end: ['g5', 'end', 'margin']
+          }
+        }
+        """),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.White)
+    ) {
+        Button(
+            modifier = Modifier.layoutId("button"),
+            onClick = {},
+        ) {
+            Text(text = stringResource(id = R.string.log_in))
+        }
+    }
+}
 
 
 
