@@ -20,9 +20,9 @@ import androidx.constraintLayout.desktop.link.LayoutView.Companion.showLayoutVie
 import androidx.constraintLayout.desktop.scan.CLTreeNode
 import androidx.constraintLayout.desktop.scan.SyntaxHighlight
 import androidx.constraintLayout.desktop.utils.Desk
+import androidx.constraintlayout.core.parser.CLElement
 import androidx.constraintlayout.core.parser.CLParser
 import androidx.constraintlayout.core.parser.CLParsingException
-import com.formdev.flatlaf.FlatIntelliJLaf
 import java.awt.*
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
@@ -35,9 +35,6 @@ import javax.swing.event.ChangeEvent
 import javax.swing.event.DocumentEvent
 import javax.swing.event.DocumentListener
 import javax.swing.event.TreeSelectionListener
-import javax.swing.text.AbstractDocument
-import javax.swing.text.AttributeSet
-import javax.swing.text.DocumentFilter
 import javax.swing.tree.DefaultMutableTreeNode
 import javax.swing.tree.DefaultTreeModel
 
@@ -157,6 +154,11 @@ class Main internal constructor() : JPanel(BorderLayout()) {
         })
     }
 
+    interface DesignSurfaceModification {
+        fun getElement(name: String) : CLElement?
+        fun updateElement(name: String, content: CLElement)
+    }
+
     private fun fromLink(event: MotionLink.Event, link: MotionLink) {
         when (event) {
             MotionLink.Event.ERROR -> {
@@ -171,7 +173,19 @@ class Main internal constructor() : JPanel(BorderLayout()) {
             }
             MotionLink.Event.LAYOUT_UPDATE -> {
                 if (layoutView == null) {
-                    layoutView = showLayoutView(link)
+                    layoutView = showLayoutView(link, object: DesignSurfaceModification {
+                        override fun getElement(name: String): CLElement? {
+                            val json = CLParser.parse(mMainText.text)
+                            return json.get(name)
+                        }
+
+                        override fun updateElement(name: String, content: CLElement) {
+                            val json = CLParser.parse(mMainText.text)
+                            json.put(name, content)
+                            mMainText.text = json.toFormattedJSON(0, 2)
+                            layoutView?.setModel(CLParser.parse(mMainText.text))
+                        }
+                    })
                     link.setUpdateLayoutPolling(true)
                 }
                 layoutView!!.setLayoutInformation(link.layoutInfos)
@@ -190,7 +204,8 @@ class Main internal constructor() : JPanel(BorderLayout()) {
             MotionLink.Event.MOTION_SCENE_UPDATE -> {
                 try {
                     mMainText.text = formatJson(link.motionSceneText)
-                    layoutView!!.setSceneString(mMainText.text)
+                    layoutView?.setModel(CLParser.parse(mMainText.text))
+                    layoutView?.setSceneString(mMainText.text)
                 } catch (e : Exception) {
                     mMainText.text = link.motionSceneText
                 }
@@ -282,7 +297,6 @@ class Main internal constructor() : JPanel(BorderLayout()) {
     companion object {
         @JvmStatic
         fun main(str: Array<String>) {
-            FlatIntelliJLaf.install()
             val frame = JFrame("ConstraintLayout Live Editor")
             val panel = Main()
             frame.contentPane = panel

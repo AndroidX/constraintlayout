@@ -16,6 +16,8 @@
 
 package androidx.constraintLayout.desktop.link
 
+import androidx.constraintLayout.desktop.link.Main.DesignSurfaceModification
+import androidx.constraintlayout.core.parser.CLObject
 import java.awt.BorderLayout
 import java.awt.event.ComponentAdapter
 import java.awt.event.ComponentEvent
@@ -30,6 +32,7 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
     var forceDimension = false
     var timeLineStart = JButton("TimeLine...")
 
+    var designSurfaceModificationCallback: DesignSurfaceModification? = null
 
     init {
         val northPanel = JPanel()
@@ -41,6 +44,7 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
         northPanel.add(timeLineStart)
         northPanel.add(toggle)
         northPanel.add(liveConnection)
+
         add(northPanel, BorderLayout.NORTH)
         add(layoutView, BorderLayout.CENTER)
 
@@ -72,4 +76,5 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
         }
 
     }
+
 }

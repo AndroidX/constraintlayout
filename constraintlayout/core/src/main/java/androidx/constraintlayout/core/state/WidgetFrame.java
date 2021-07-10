@@ -67,8 +67,7 @@ public class WidgetFrame {
         return Math.max(0, bottom - top);
     }
 
-    public WidgetFrame() {
-    }
+    public WidgetFrame() {}
 
     public WidgetFrame(ConstraintWidget widget) {
         this.widget = widget;
