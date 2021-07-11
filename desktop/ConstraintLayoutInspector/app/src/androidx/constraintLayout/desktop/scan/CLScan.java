@@ -15,6 +15,7 @@
  */
 package androidx.constraintLayout.desktop.scan;
 
+import androidx.constraintLayout.desktop.ui.utils.Debug;
 import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.core.parser.*;
 
@@ -214,6 +215,53 @@ public class CLScan {
             e.printStackTrace();
         }
         return ret;
+    }
+
+   public  static  CLKey findCLKey(CLObject obj, String name ) {
+
+        int n = obj.size();
+        try {
+            for (int i = 0; i < n; i++) {
+                CLElement tmp = obj.get(i);
+                if (!(tmp instanceof CLKey)) {
+                    continue;
+                }
+                CLKey clkey = ((CLKey) tmp);
+                String attr = clkey.content();
+                System.out.println(Debug.indent(0)+attr);
+                if (name.equals(attr)) {
+                    return clkey;
+                }
+                CLElement value = clkey.getValue();
+
+                if (value != null) {
+                    if (value instanceof CLArray) {
+                        CLArray array = (CLArray) value;
+                        int count = array.size();
+                        for (int j = 0; j < count; j++) {
+                            CLElement v = array.get(j);
+
+                            if (v instanceof CLObject) {
+                                CLKey found = findCLKey((CLObject) v, name);
+                                if (found != null) {
+                                    return found;
+                                }
+                            }
+                        }
+                    } else if (value instanceof CLObject) {
+
+                        CLKey found = findCLKey((CLObject) value, name);
+                        if (found != null) {
+                            return found;
+                        }
+                    }
+                }
+            }
+
+        } catch (CLParsingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

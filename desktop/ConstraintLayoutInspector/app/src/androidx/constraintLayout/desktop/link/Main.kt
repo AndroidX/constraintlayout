@@ -205,6 +205,7 @@ class Main internal constructor() : JPanel(BorderLayout()) {
                 try {
                     mMainText.text = formatJson(link.motionSceneText)
                     layoutView?.setModel(CLParser.parse(mMainText.text))
+                    layoutView?.setSceneString(mMainText.text)
                 } catch (e : Exception) {
                     mMainText.text = link.motionSceneText
                 }

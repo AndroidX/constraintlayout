@@ -479,7 +479,7 @@ public class Motion {
         return null;
     }
 
-    public int buildKeyFrames(float[] keyFrames, int[] mode) {
+    public int buildKeyFrames(float[] keyFrames, int[] mode, int[] pos) {
         if (keyFrames != null) {
             int count = 0;
             double[] time = mSpline[0].getTimePoints();
@@ -489,7 +489,12 @@ public class Motion {
                 }
                 count = 0;
             }
-
+            if (pos != null) {
+                for (MotionPaths keyFrame : mMotionPaths) {
+                    pos[count++] = (int) (100 * keyFrame.position);
+                }
+                count = 0;
+            }
             for (int i = 0; i < time.length; i++) {
                 mSpline[0].getPos(time[i], mInterpolateData);
                 mStartMotionPath.getCenter(time[i], mInterpolateVariables, mInterpolateData, keyFrames, count);
@@ -650,7 +655,7 @@ public class Motion {
         }
 
         mStartPoint.different(mEndPoint, splineAttributes);
-         if (DEBUG) {
+        if (DEBUG) {
             HashSet<String> attr = new HashSet<>();
             mStartPoint.different(mEndPoint, attr);
             Utils.log(TAG, ">>>>>>>>>>>>>>> MotionConstrainedPoint found " + Arrays.toString(attr.toArray()));
@@ -1283,19 +1288,19 @@ public class Motion {
                 }
             }
 
-        //       TODO add support for path rotate
-        //            if (mAttributesMap != null) {
-        //                for (SplineSet aSpline : mAttributesMap.values()) {
-        //                    if (aSpline instanceof ViewSpline.PathRotate && mInterpolateVelocity.length > 1)
-        //                        ((ViewSpline.PathRotate) aSpline).setPathRotate(child, position,
-        //                                mInterpolateVelocity[0], mInterpolateVelocity[1]);
-        //                }
-        //
-        //            }
-        //            if (timePathRotate != null) {
-        //                timeAnimation |= timePathRotate.setPathRotate(child, keyCache, position, time,
-        //                        mInterpolateVelocity[0], mInterpolateVelocity[1]);
-        //            }
+            //       TODO add support for path rotate
+            //            if (mAttributesMap != null) {
+            //                for (SplineSet aSpline : mAttributesMap.values()) {
+            //                    if (aSpline instanceof ViewSpline.PathRotate && mInterpolateVelocity.length > 1)
+            //                        ((ViewSpline.PathRotate) aSpline).setPathRotate(child, position,
+            //                                mInterpolateVelocity[0], mInterpolateVelocity[1]);
+            //                }
+            //
+            //            }
+            //            if (timePathRotate != null) {
+            //                timeAnimation |= timePathRotate.setPathRotate(child, keyCache, position, time,
+            //                        mInterpolateVelocity[0], mInterpolateVelocity[1]);
+            //            }
 
             for (int i = 1; i < mSpline.length; i++) {
                 CurveFit spline = mSpline[i];
@@ -1345,16 +1350,16 @@ public class Motion {
         }
 
         // TODO add pathRotate KeyCycles
-                if (mCycleMap != null) {
-                    for (KeyCycleOscillator osc : mCycleMap.values()) {
-                        if (osc instanceof KeyCycleOscillator.PathRotateSet) {
-                            ((KeyCycleOscillator.PathRotateSet) osc).setPathRotate(child, position,
-                                    mInterpolateVelocity[0], mInterpolateVelocity[1]);
-                        } else {
-                            osc.setProperty(child, position);
-                        }
-                    }
+        if (mCycleMap != null) {
+            for (KeyCycleOscillator osc : mCycleMap.values()) {
+                if (osc instanceof KeyCycleOscillator.PathRotateSet) {
+                    ((KeyCycleOscillator.PathRotateSet) osc).setPathRotate(child, position,
+                            mInterpolateVelocity[0], mInterpolateVelocity[1]);
+                } else {
+                    osc.setProperty(child, position);
                 }
+            }
+        }
         //   When we support TimeCycle return true if repaint is needed
         //        return timeAnimation;
         return false;

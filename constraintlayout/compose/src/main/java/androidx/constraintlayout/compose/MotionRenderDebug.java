@@ -122,7 +122,7 @@ public class MotionRenderDebug {
             return;
         }
 
-        mKeyFrameCount = motionController.buildKeyFrames(mKeyFramePoints, mPathMode);
+        mKeyFrameCount = motionController.buildKeyFrames(mKeyFramePoints, mPathMode, null);
 
         if (mode >= Motion.DRAW_PATH_BASIC) {
 

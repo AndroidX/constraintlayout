@@ -27,7 +27,6 @@ import androidx.constraintlayout.core.motion.utils.TypedValues;
 import androidx.constraintlayout.core.widgets.ConstraintWidget;
 import androidx.constraintlayout.core.widgets.ConstraintWidgetContainer;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -150,6 +149,7 @@ public class Transition {
             prop.applyDelta(keyAttributes);
             motionControl.addKey(keyAttributes);
         }
+
         public void setKeyCycle(TypedBundle prop) {
             MotionKeyCycle keyAttributes = new MotionKeyCycle();
             prop.applyDelta(keyAttributes);
@@ -301,10 +301,15 @@ public class Transition {
     public float[] getPath(String id) {
         WidgetState widgetState = state.get(id);
         int duration = 1000;
-        int frames =  duration/16;
-        float []mPoints = new float[frames * 2];
+        int frames = duration / 16;
+        float[] mPoints = new float[frames * 2];
         widgetState.motionControl.buildPath(mPoints, frames);
         return mPoints;
+    }
+
+    public int getKeyFrames(String id, float[] rectangles, int[] pathMode, int[] position) {
+        WidgetState widgetState = state.get(id);
+        return widgetState.motionControl.buildKeyFrames(rectangles, pathMode, position);
     }
 
     private WidgetState getWidgetState(String widgetId, ConstraintWidget child, int transitionState) {
