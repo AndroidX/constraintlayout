@@ -272,6 +272,7 @@ class LayoutView : JPanel(BorderLayout()) {
                 }
             }
         }
+
         for (guideline in horizontalGuidelines) {
             for (widget in widgets) {
                 if (guideline.name.equals(widget.id)) {
@@ -294,7 +295,6 @@ class LayoutView : JPanel(BorderLayout()) {
     }
 
     class HorizontalGuideline(val key: String, element: CLObject) : GuidelineModel(key, element.getFloat("percent")) {
-
         lateinit var img : BufferedImage
         val gap = 2
 
