@@ -29,9 +29,8 @@ class LayoutInspector(link: MotionLink) : JPanel(BorderLayout()) {
     val layoutView = LayoutView(link)
     val motionLink = link
     var forceDimension = false
-    var timeLineStart = JButton("TimeLine...")
-
     var designSurfaceModificationCallback: DesignSurfaceModification? = null
+    var timeLineStart = JButton("TimeLine...")
 
     init {
         val northPanel = JPanel()

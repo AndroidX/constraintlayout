@@ -11,14 +11,10 @@ import androidx.constraintlayout.compose.*
 
 class MainActivity : AppCompatActivity() {
     private var mFrameLayout: FrameLayout? = null
-<<<<<<< HEAD
-    private var composeNum = 16
 
-    private var MAX = 33
-=======
     private var composeNum = 20
     private var MAX = 34
->>>>>>> c5010a50 (WIP)
+
     var map = HashMap<Int, String>();
     val debugServer = DebugServer()
 
